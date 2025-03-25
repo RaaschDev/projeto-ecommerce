@@ -1,4 +1,6 @@
+import { Button } from '../ui/Button'
 import style from './product-card.module.scss'
+import { ShoppingCartOutlined } from '@ant-design/icons'
 
 interface ProductCardProps{
     id:string,
@@ -8,7 +10,7 @@ interface ProductCardProps{
     imgUrl:string
 }
 
-export function ProductCard({id, title, description, price,imgUrl}:ProductCardProps) {
+export function ProductCard({title, description, price,imgUrl}:ProductCardProps) {
     return (
         <div className={style.productCard}>
             <img className={style.productImage} src={imgUrl} alt={title} />
@@ -18,9 +20,10 @@ export function ProductCard({id, title, description, price,imgUrl}:ProductCardPr
                     <p>{description}</p>
                     <span className={style.price}>{price}</span>
                 </div>
-                <button>
-                    Adicionar ao carrinho
-                </button>
+                <Button variant="danger">
+                    <ShoppingCartOutlined/>
+                    Adicionar ao Carrinho
+                </Button>
             </div>
         </div>
     )
