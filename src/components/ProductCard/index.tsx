@@ -1,16 +1,17 @@
 import { Button } from '../ui/Button'
 import style from './product-card.module.scss'
-import { ShoppingCartOutlined } from '@ant-design/icons'
+import { CloseOutlined, ShoppingCartOutlined } from '@ant-design/icons'
 
-interface ProductCardProps{
-    id:string,
-    title:string,
-    description:string,
-    price:number,
-    imgUrl:string
+interface ProductCardProps {
+    id: string,
+    title: string,
+    description: string,
+    price: number,
+    imgUrl: string,
+    isInCart?: boolean
 }
 
-export function ProductCard({title, description, price,imgUrl}:ProductCardProps) {
+export function ProductCard({ title, description, price, imgUrl, isInCart }: ProductCardProps) {
     return (
         <div className={style.productCard}>
             <img className={style.productImage} src={imgUrl} alt={title} />
@@ -20,9 +21,17 @@ export function ProductCard({title, description, price,imgUrl}:ProductCardProps)
                     <p>{description}</p>
                     <span className={style.price}>{price}</span>
                 </div>
-                <Button variant="danger">
-                    <ShoppingCartOutlined/>
-                    Adicionar ao Carrinho
+                <Button variant={isInCart ? 'danger':'primary'}>
+                    {isInCart ?
+                        <>
+                            <CloseOutlined />
+                            Remover do carrinho
+                        </> :
+                        <>
+                            <ShoppingCartOutlined />
+                            Adicionar ao carrinho
+                        </>
+                    }
                 </Button>
             </div>
         </div>
