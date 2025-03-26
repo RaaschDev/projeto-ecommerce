@@ -6,7 +6,7 @@ export function Header(){
     return(
         <header className={style.container}>
             <Link to='/'>
-            <strong>Ecommerce Developer</strong></Link>
+            <strong>E-commerce Developer</strong></Link>
             <nav>
                 <Link to='/'>Home</Link>
                 <Link to='/cart' className={style.cartLink}>
